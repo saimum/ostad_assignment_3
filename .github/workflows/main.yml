@@ -16,7 +16,7 @@ jobs:
    - name: "install node js 22"
      uses: actions/setup-node@v3
      with:
-      node-version: 22
+      node-version: '22'
      
    - name: "Node dependency Install"
      run: npm install
@@ -31,6 +31,9 @@ jobs:
      with:
       name: test-results
       path: test-results/results.txt
+                  
+   - name: "show result"
+     run: cat test-results
      
  deploy_job:
   name: "job_2: deploy_job"
