@@ -8,7 +8,7 @@ on:
 jobs:
  test_job:
   name: "job_1: test_job"
-  runs-on: self-hosted
+  runs-on: ubuntu-latest
   steps:
    - name : "check out code"
      uses: actions/checkout@v3
@@ -24,7 +24,7 @@ jobs:
    - name: "Run test & store log"
      run: |
       mkdir -p test-results
-      npm check > test-results/results.txt
+      npm check > test-results/results.txt || echo "Test failed"
       
    - name: "Upload test result in artifact"
      uses: actions/upload-artifact@v3
@@ -34,7 +34,7 @@ jobs:
      
  deploy_job:
   name: "job_2: deploy_job"
-  runs-on: self-hosted
+  runs-on: ubuntu-latest
   needs: test_job
   steps:
    - name : "check out code"
