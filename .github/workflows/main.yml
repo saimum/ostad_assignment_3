@@ -9,36 +9,42 @@ jobs:
  test_job:
   name: "job_1: test_job"
   runs-on: self-hosted
-   steps:
-    - name : "check out code"
-      uses: actions/checkout@v3
+  steps:
+   - name : "check out code"
+     uses: actions/checkout@v3
+     
+   - name: "install node js 22"
+     uses: actions/setup-node@v3
+     with:
+      node-version: 22
+     
+   - name: "Node dependency Install"
+     run: npm install
+     
+   - name: "Run test & store log"
+     run: |
+      mkdir -p test-results
+      npm check > test-results/results.txt
       
-    - name: "install node js 22"
-      uses: actions/setup-node@v3
-      with:
-       node-version: 22
-      
-    - name: "Node dependency Install"
-      run: npm install
-      
-    - name: "Run test & store log"
-      run: |
-       mkdir -p test-results
-       npm check > test-results/results.txt
-       
-    - name: "Upload test result in artifact"
-      uses: actions/upload-artifact@v3
-      with:
-       name: test-results
-       path: test-results/results.txt
-      
+   - name: "Upload test result in artifact"
+     uses: actions/upload-artifact@v3
+     with:
+      name: test-results
+      path: test-results/results.txt
+     
  deploy_job:
   name: "job_2: deploy_job"
   runs-on: self-hosted
   needs: test_job
-   steps:
-    - name : "check out code"
-      uses: actions/checkout@v3
+  steps:
+   - name : "check out code"
+     uses: actions/checkout@v3
+     
+   - name: "Download artifact"
+     uses: actions/upload-artifact@v3
+     with:
+      name: test-results
+      path: test-results/results.txt
 
 
 
