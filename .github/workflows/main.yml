@@ -8,7 +8,7 @@ on:
 jobs:
  test_job:
   name: "job_1: test_job"
-  runs-on: ubuntu-latest #ubuntu-latest self-hosted-windows
+  runs-on: self-hosted-windows #ubuntu-latest self-hosted-windows
   steps:
    - name : "check out code"
      uses: actions/checkout@v3
@@ -67,19 +67,18 @@ jobs:
 #   - name: Start app with PM2
 #     run: pm2 start src/server.js --name my-node-app
 
-   - name: "Delete existing PM2 app if it exists"
-     shell: powershell
-     run: |
-          try {
-            pm2 delete "node-app"
-          } catch {
-            Write-Host "PM2 app node-app not found or already stopped. Continuing..."
-          }
+#   - name: "Delete existing PM2 app if it exists"
+#     shell: powershell
+#     run: |
+#          try {
+#            pm2 delete "node-app"
+#          } catch {
+#            Write-Host "PM2 app node-app not found or already stopped. Continuing..."
+#          }
 
    - name: Start new PM2 app
      shell: powershell
-     run: |
-          pm2 start src/server.js --name "node-app"
+     run: pm2 start src/server.js --name "node-app"
 
    
 
