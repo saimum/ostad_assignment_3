@@ -35,7 +35,7 @@ jobs:
      
  deploy_job:
   name: "job_2: deploy_job"
-  runs-on: self-hosted
+  runs-on: self-hosted-windows
   needs: test_job
   steps:
    - name: Download artifact
