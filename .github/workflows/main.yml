@@ -41,7 +41,7 @@ jobs:
           path: test_result_2.txt    
                   
    - name: "show result"
-     run: ls
+     run: ls -l
      
 # deploy_job:
 #  name: "job_2: deploy_job"
