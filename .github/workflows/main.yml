@@ -26,9 +26,10 @@ jobs:
 #      mkdir -p test-results
 #      npm check > test-results/results.txt || echo "Test failed"
    - name: "Run test and store result"
-     run: |
-      npm run check > test_result.txt
-      cat test_result.txt
+     run: npm run check > test_result.txt
+   
+   - name: "show test_result.txt"
+     run: cat test_result.txt
 #      
 #   - name: "Upload test result in artifact"
 #     uses: actions/upload-artifact@v3
