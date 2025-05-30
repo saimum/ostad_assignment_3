@@ -29,13 +29,13 @@ jobs:
      run: npm run check > test_result.txt
       
    - name: "upload test result in artifact"
-     uses: actions/upload-artifact@v3
+     uses: actions/upload-artifact@v4
      with:
       name: test_result
       path: test_result.txt
       
    - name: Download artifact
-     uses: actions/download-artifact@v3
+     uses: actions/download-artifact@v4
      with:
           name: test_result # Download the artifact by its name
           path: test_result_2.txt    
