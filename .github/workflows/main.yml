@@ -50,7 +50,7 @@ jobs:
      run: npm install
      
    - name: Install pm2 globally
-     shell: bash
+     shell: powershell
      run: npm install -g pm2
      
 #   - name: "delete existing app and start new"
@@ -80,7 +80,7 @@ jobs:
    - name: Start new PM2 app
      shell: powershell
      run: |
-          pm2 start app.js --name "node-app"
+          pm2 start server.js --name "node-app"
 
    
 
