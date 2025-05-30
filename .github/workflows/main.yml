@@ -1,4 +1,4 @@
-name: "CI-CD for node js app"
+name: "CI/CD Pipeline for a Node.js Application"
 
 on:
  push:
@@ -20,11 +20,7 @@ jobs:
    
    - name: "node dependency Install"
      run: npm install
-     
-#   - name: "Run test & store log"
-#     run: |
-#      mkdir -p test-results
-#      npm check > test-results/results.txt || echo "Test failed"
+   
    - name: "run test and store result"
      run: npm run check > test_result.txt
       
@@ -34,29 +30,26 @@ jobs:
       name: test_result
       path: test_result.txt
       
+
+
+     
+ deploy_job:
+  name: "job_2: deploy_job"
+  runs-on: ubuntu-latest
+  needs: test_job
+  steps:
    - name: Download artifact
      uses: actions/download-artifact@v4
      with:
-          name: test_result # Download the artifact by its name
-                  
-   - name: "show result"
+       name: test_result
+
+   - name: "show test result"
      run: cat test_result.txt
-     
-# deploy_job:
-#  name: "job_2: deploy_job"
-#  runs-on: ubuntu-latest
-#  needs: test_job
-#  steps:
+
 #   - name : "check out code"
 #     uses: actions/checkout@v3
-#     
-#   - name: "Download artifact"
-#     uses: actions/upload-artifact@v3
-#     with:
-#      name: test-results
-#      path: test-results/results.txt
-
-
+#
+   
 
 
 
