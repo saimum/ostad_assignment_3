@@ -46,19 +46,22 @@ jobs:
    - name: "show test result"
      run: type test_result.txt
 
-#   - name : "check out code"
-#     uses: actions/checkout@v3
-#     
+   - name : "check out code"
+     uses: actions/checkout@v3
+     
 #   - name: "install node js 22"
 #     uses: actions/setup-node@v4
 #     with:
 #      node-version: '22'
-#   
-#   - name: "node dependency Install"
-#     run: npm install
-#     
-#   - name: "start project"
-#     run: npm start
+   
+   - name: "node dependency Install"
+     run: npm install
+     
+   - name: "delete existing app and start new"
+     run: |
+      pm2 delete node-app || true;
+      pm2 start "./src/server.js" --name node-app;
+      pm2 save;
 
    
 
