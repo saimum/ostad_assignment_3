@@ -8,7 +8,7 @@ on:
 jobs:
  test_job:
   name: "job_1: test_job"
-  runs-on: ubuntu-latest #ubuntu-latest self-hosted
+  runs-on: ubuntu-latest #ubuntu-latest self-hosted-windows
   steps:
    - name : "check out code"
      uses: actions/checkout@v3
