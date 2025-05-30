@@ -8,15 +8,15 @@ on:
 jobs:
  test_job:
   name: "job_1: test_job"
-  runs-on: ubuntu-latest
+  runs-on: self-hosted #ubuntu-latest
   steps:
    - name : "check out code"
      uses: actions/checkout@v3
      
-   - name: "install node js 22"
-     uses: actions/setup-node@v4
-     with:
-      node-version: '22'
+#   - name: "install node js 22"
+#     uses: actions/setup-node@v4
+#     with:
+#      node-version: '22'
    
    - name: "node dependency Install"
      run: npm install
@@ -35,7 +35,7 @@ jobs:
      
  deploy_job:
   name: "job_2: deploy_job"
-  runs-on: ubuntu-latest
+  runs-on: self-hosted
   needs: test_job
   steps:
    - name: Download artifact
@@ -44,7 +44,7 @@ jobs:
        name: test_result
 
    - name: "show test result"
-     run: cat test_result.txt
+     run: type test_result.txt
 
    - name : "check out code"
      uses: actions/checkout@v3
