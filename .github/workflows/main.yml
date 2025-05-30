@@ -18,28 +18,31 @@ jobs:
      with:
       node-version: '22'
    
-   - name: "Node dependency Install"
+   - name: "node dependency Install"
      run: npm install
      
 #   - name: "Run test & store log"
 #     run: |
 #      mkdir -p test-results
 #      npm check > test-results/results.txt || echo "Test failed"
-   - name: "Run test and store result"
+   - name: "run test and store result"
      run: npm run check > test_result.txt
-   
-   - name: "show test_result.txt"
-     run: cat test_result.txt
-#      
-#   - name: "Upload test result in artifact"
-#     uses: actions/upload-artifact@v3
-#     with:
-#      name: test-results
-#      path: test-results/results.txt
-#                  
-#   - name: "show result"
-#     run: cat test-results
-#     
+      
+   - name: "upload test result in artifact"
+     uses: actions/upload-artifact@v3
+     with:
+      name: test_result
+      path: test_result.txt
+      
+   - name: "download test result from artifact"
+     uses: actions/upload-artifact@v3
+     with:
+      name: test_result
+      path: test_result2.txt      
+                  
+   - name: "show result"
+     run: cat test_result2.txt 
+     
 # deploy_job:
 #  name: "job_2: deploy_job"
 #  runs-on: ubuntu-latest
