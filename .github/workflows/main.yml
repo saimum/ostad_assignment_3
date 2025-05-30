@@ -68,10 +68,6 @@ jobs:
 #   - name: Start app with PM2
 #     run: pm2 start src/server.js --name my-node-app
 
-   - name: Install PM2 globally
-     shell: powershell
-     run: npm install -g pm2
-
    - name: Delete existing PM2 app if it exists
      shell: powershell
      run: |
