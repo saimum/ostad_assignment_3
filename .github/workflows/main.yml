@@ -32,7 +32,7 @@ jobs:
      
  deploy_job:
   name: "job_2: deploy_job"
-  runs-on: self-hosted-windows
+  runs-on: windows-latest
   needs: test_job
   steps:
    - name: Download artifact
@@ -49,8 +49,8 @@ jobs:
    - name: "node dependency Install"
      run: npm install
      
-   #- name: Install pm2 globally
-   #  run: npm install pm2 -g 
+   - name: Install pm2 globally
+     run: npm install pm2 -g 
      
 #   - name: "delete existing app and start new"
 #     shell: powershell
@@ -70,7 +70,6 @@ jobs:
    - name: "Delete existing PM2 app if it exists"
      shell: powershell
      run: |
-          npm install pm2 -g;
           try {
             pm2 delete node-app
           } catch {
