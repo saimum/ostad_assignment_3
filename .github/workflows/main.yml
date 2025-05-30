@@ -18,16 +18,17 @@ jobs:
      with:
       node-version: '22'
    
-   - name : "check node js"
-     run: node -v
-#     
-#   - name: "Node dependency Install"
-#     run: npm install
-#     
+   - name: "Node dependency Install"
+     run: npm install
+     
 #   - name: "Run test & store log"
 #     run: |
 #      mkdir -p test-results
 #      npm check > test-results/results.txt || echo "Test failed"
+    - name: "Run test and store result"
+      run: |
+       npm run check > test_result.txt
+       echo test_result.txt
 #      
 #   - name: "Upload test result in artifact"
 #     uses: actions/upload-artifact@v3
