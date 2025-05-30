@@ -34,14 +34,14 @@ jobs:
       name: test_result
       path: test_result.txt
       
-#   - name: "download test result from artifact"
-#     uses: actions/upload-artifact@v3
-#     with:
-#      name: test_result
-#      path: test_result2.txt      
-#                  
-#   - name: "show result"
-#     run: cat test_result2.txt 
+   - name: Download artifact
+     uses: actions/download-artifact@v4
+     with:
+          name: test_result # Download the artifact by its name
+          path: test_result_2.txt    
+                  
+   - name: "show result"
+     run: cat test_result_2.txt 
      
 # deploy_job:
 #  name: "job_2: deploy_job"
