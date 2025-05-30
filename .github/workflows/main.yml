@@ -8,15 +8,15 @@ on:
 jobs:
  test_job:
   name: "job_1: test_job"
-  runs-on: self-hosted #ubuntu-latest
+  runs-on: ubuntu-latest #ubuntu-latest self-hosted
   steps:
    - name : "check out code"
      uses: actions/checkout@v3
      
-#   - name: "install node js 22"
-#     uses: actions/setup-node@v4
-#     with:
-#      node-version: '22'
+   - name: "install node js 22"
+     uses: actions/setup-node@v4
+     with:
+      node-version: '22'
    
    - name: "node dependency Install"
      run: npm install
@@ -46,19 +46,19 @@ jobs:
    - name: "show test result"
      run: type test_result.txt
 
-   - name : "check out code"
-     uses: actions/checkout@v3
-     
-   - name: "install node js 22"
-     uses: actions/setup-node@v4
-     with:
-      node-version: '22'
-   
-   - name: "node dependency Install"
-     run: npm install
-     
-   - name: "start project"
-     run: npm start
+#   - name : "check out code"
+#     uses: actions/checkout@v3
+#     
+#   - name: "install node js 22"
+#     uses: actions/setup-node@v4
+#     with:
+#      node-version: '22'
+#   
+#   - name: "node dependency Install"
+#     run: npm install
+#     
+#   - name: "start project"
+#     run: npm start
 
    
 
