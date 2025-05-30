@@ -46,9 +46,20 @@ jobs:
    - name: "show test result"
      run: cat test_result.txt
 
-#   - name : "check out code"
-#     uses: actions/checkout@v3
-#
+   - name : "check out code"
+     uses: actions/checkout@v3
+     
+   - name: "install node js 22"
+     uses: actions/setup-node@v4
+     with:
+      node-version: '22'
+   
+   - name: "node dependency Install"
+     run: npm install
+     
+   - name: "start project"
+     run: npm start
+
    
 
 
