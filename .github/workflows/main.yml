@@ -18,7 +18,7 @@ jobs:
      with:
       node-version: '22'
    
-   - name : "Final"
+   - name : "check node js"
      run: node -v
 #     
 #   - name: "Node dependency Install"
