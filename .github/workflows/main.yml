@@ -50,6 +50,7 @@ jobs:
      run: npm install
      
    - name: "delete existing app and start new"
+     shell: powershell
      run: |
       pm2 delete node-app -s -ErrorAction SilentlyContinue;
       pm2 start "./src/server.js" --name node-app;
