@@ -29,9 +29,6 @@ jobs:
      with:
       name: test_result
       path: test_result.txt
-      
-
-
      
  deploy_job:
   name: "job_2: deploy_job"
@@ -48,18 +45,13 @@ jobs:
 
    - name : "check out code"
      uses: actions/checkout@v3
-     
-#   - name: "install node js 22"
-#     uses: actions/setup-node@v4
-#     with:
-#      node-version: '22'
-   
+  
    - name: "node dependency Install"
      run: npm install
      
    - name: "delete existing app and start new"
      run: |
-      pm2 delete node-app || true;
+      pm2 delete node-app -s -ErrorAction SilentlyContinue;
       pm2 start "./src/server.js" --name node-app;
       pm2 save;
 
