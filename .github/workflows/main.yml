@@ -71,9 +71,9 @@ jobs:
      shell: powershell
      run: |
           try {
-            pm2 delete node-app
+            pm2 delete "node-app"
           } catch {
-            Write-Host "PM2 app 'node-app' not found or already stopped. Continuing..."
+            Write-Host "PM2 app node-app not found or already stopped. Continuing..."
           }
 
    - name: Start new PM2 app
